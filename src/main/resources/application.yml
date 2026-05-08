@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/todo_app
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:VGhpcy1pcy1hLWRldmVsb3BtZW50LXNlY3JldC1iYXNlNjQtMzItYnl0ZXM=}
+    expiration-ms: 86400000
+
+logging:
+  level:
+    org.springframework.security: INFO
