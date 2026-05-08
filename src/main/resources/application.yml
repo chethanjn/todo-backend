@@ -1,16 +1,49 @@
+#server:
+#  port: 8080
+#
+#spring:
+#  data:
+#    mongodb:
+#      uri: mongodb://localhost:27017/todo_app
+#
+#app:
+#  jwt:
+#    secret: ${JWT_SECRET:VGhpcy1pcy1hLWRldmVsb3BtZW50LXNlY3JldC1iYXNlNjQtMzItYnl0ZXM=}
+#    expiration-ms: 86400000
+#
+#logging:
+#  level:
+#    org.springframework.security: INFO
+
+
+#production
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
+  application:
+    name: todo-backend
+
   data:
     mongodb:
-      uri: mongodb://localhost:27017/todo_app
+      uri: ${SPRING_DATA_MONGODB_URI}
+      database: ${SPRING_DATA_MONGODB_DATABASE:todo_app}
 
 app:
   jwt:
-    secret: ${JWT_SECRET:VGhpcy1pcy1hLWRldmVsb3BtZW50LXNlY3JldC1iYXNlNjQtMzItYnl0ZXM=}
+    secret: ${JWT_SECRET:dev-secret-change-me}
     expiration-ms: 86400000
 
 logging:
   level:
     org.springframework.security: INFO
+    org.springframework.web: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
