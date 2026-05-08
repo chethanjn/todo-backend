@@ -8,6 +8,7 @@ spring:
   data:
     mongodb:
       uri: ${SPRING_DATA_MONGODB_URI}
+      database: ${SPRING_DATA_MONGODB_DATABASE:todo_app}
 
 app:
   jwt:
